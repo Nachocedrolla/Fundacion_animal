@@ -44,12 +44,6 @@ function buildCarousel() {
     });
   });
 
-  const carousel = document.querySelector('.carousel');
-  carousel?.addEventListener('mouseenter', stopCarouselAutoplay);
-  carousel?.addEventListener('mouseleave', startCarouselAutoplay);
-  carousel?.addEventListener('focusin', stopCarouselAutoplay);
-  carousel?.addEventListener('focusout', startCarouselAutoplay);
-
   renderCarousel();
   startCarouselAutoplay();
 }
@@ -69,22 +63,25 @@ function renderCarousel() {
 function moveCarousel(direction) {
   carouselIndex += direction;
   renderCarousel();
+  startCarouselAutoplay();
 }
 
 function goToSlide(index) {
   carouselIndex = index;
   renderCarousel();
+  startCarouselAutoplay();
 }
 
 function startCarouselAutoplay() {
-  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
   stopCarouselAutoplay();
-  carouselTimer = window.setInterval(() => moveCarousel(1), 2800);
+  carouselTimer = window.setTimeout(() => {
+    moveCarousel(1);
+  }, 2600);
 }
 
 function stopCarouselAutoplay() {
   if (carouselTimer) {
-    window.clearInterval(carouselTimer);
+    window.clearTimeout(carouselTimer);
     carouselTimer = null;
   }
 }
