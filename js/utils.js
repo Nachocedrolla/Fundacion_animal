@@ -20,18 +20,55 @@ function animateCounter(el, target, duration = 1800) {
   requestAnimationFrame(step);
 }
 
+function getCounterValue(el) {
+  const base = Number(el.dataset.counterBase);
+  const rate = Number(el.dataset.counterRate || 0);
+  const intervalDays = Number(el.dataset.counterInterval || 1);
+  const startDate = el.dataset.counterStart ? new Date(`${el.dataset.counterStart}T00:00:00-03:00`) : null;
+  const hasDynamicGrowth = Number.isFinite(base) && rate > 0 && startDate instanceof Date && !Number.isNaN(startDate.getTime());
+
+  if (!Number.isFinite(base)) {
+    const fallback = Number(el.dataset.counter || 0);
+    return Number.isFinite(fallback) ? fallback : 0;
+  }
+
+  if (!hasDynamicGrowth) {
+    return base;
+  }
+
+  const now = new Date();
+  const elapsedDays = Math.max(0, Math.floor((now - startDate) / 86400000));
+  const increments = Math.floor(elapsedDays / intervalDays) * rate;
+  return base + increments;
+}
+
 function initCounters() {
   const counters = document.querySelectorAll('[data-counter]');
-  if (!counters.length) return;
+  const dynamicCounters = document.querySelectorAll('[data-counter-base]');
+  if (!counters.length && !dynamicCounters.length) return;
+
+  const updateCounter = (el) => {
+    const value = getCounterValue(el);
+    el.textContent = value.toLocaleString('es-AR') + (el.dataset.suffix || '');
+  };
+
+  dynamicCounters.forEach(updateCounter);
+
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(e => {
       if (e.isIntersecting) {
-        animateCounter(e.target, parseInt(e.target.dataset.counter));
+        const target = getCounterValue(e.target);
+        animateCounter(e.target, target);
         observer.unobserve(e.target);
       }
     });
   }, { threshold: 0.5 });
   counters.forEach(c => observer.observe(c));
+  dynamicCounters.forEach(c => observer.observe(c));
+
+  setInterval(() => {
+    dynamicCounters.forEach(updateCounter);
+  }, 60000);
 }
 
 // Clipboard copy
