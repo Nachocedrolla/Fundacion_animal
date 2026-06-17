@@ -79,7 +79,7 @@ function goToSlide(index) {
 function startCarouselAutoplay() {
   if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
   stopCarouselAutoplay();
-  carouselTimer = window.setInterval(() => moveCarousel(1), 4500);
+  carouselTimer = window.setInterval(() => moveCarousel(1), 2800);
 }
 
 function stopCarouselAutoplay() {
