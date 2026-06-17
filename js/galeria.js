@@ -1,5 +1,5 @@
 // js/galeria.js
-const WHATSAPP_NUM = '5491112345678';
+const WHATSAPP_NUM = '3516421684';
 
 function buildAnimalCard(animal) {
   const especie = animal.especie || 'otro';

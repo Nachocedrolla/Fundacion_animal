@@ -1,7 +1,8 @@
 /* css/admin.css */
 body { font-family: 'Inter', system-ui, sans-serif; background: #F9FAFB; }
 .admin-sidebar { width: 240px; background: #1A1A1A; min-height: 100vh; position: fixed; top: 0; left: 0; padding: 1.5rem; }
-.admin-sidebar__logo { color: #F97316; font-weight: 700; font-size: 1.1rem; margin-bottom: 2rem; display: block; }
+.admin-sidebar__logo { color: #F97316; font-weight: 700; font-size: 1.1rem; margin-bottom: 2rem; display: flex; align-items: center; gap: .5rem; }
+.admin-sidebar__logo img { width: 28px; height: 28px; object-fit: contain; flex-shrink: 0; }
 .admin-sidebar__nav { display: flex; flex-direction: column; gap: .5rem; }
 .admin-sidebar__nav a { color: #D1D5DB; padding: .75rem 1rem; border-radius: 8px; font-size: .9rem; font-weight: 500; transition: .2s; }
 .admin-sidebar__nav a:hover, .admin-sidebar__nav a.active { background: #F97316; color: #fff; }

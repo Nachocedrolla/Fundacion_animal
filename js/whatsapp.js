@@ -1,6 +1,6 @@
 // js/whatsapp.js
-const WA_NUM = '5491112345678';
-const WA_MSG = encodeURIComponent('Hola! Me comunico desde la web de Patitas Felices.');
+const WA_NUM = '3516421684';
+const WA_MSG = encodeURIComponent('Hola! Me comunico desde la web de Fundacion huellitas de esperanza.');
 
 document.addEventListener('DOMContentLoaded', () => {
   const fab = document.createElement('a');

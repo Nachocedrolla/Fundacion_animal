@@ -12,7 +12,7 @@ INSERT INTO animales (nombre, especie, edad, historia, foto_url, destacado) VALU
 INSERT INTO testimonios (nombre, tipo, texto, destacado) VALUES
 ('Martina G.',     'adoptante',  'Adoptamos a Luna hace 6 meses y cambió nuestra familia para siempre. El proceso fue muy fácil y el refugio nos acompañó en todo momento.', true),
 ('Carlos y Sofía', 'adoptante',  'Cuando fuimos a buscar un perro no esperábamos encontrar tanto amor. Thor es parte de la familia desde el primer día.', true),
-('Laura M.',       'voluntario', 'Ser voluntaria en Patitas Felices me enseñó más sobre la compasión de lo que aprendí en años. Recomiendo a todos que se sumen.', true),
+('Laura M.',       'voluntario', 'Ser voluntaria en Fundacion huellitas de esperanza me enseñó más sobre la compasión de lo que aprendí en años. Recomiendo a todos que se sumen.', true),
 ('Rodrigo P.',     'donante',    'Dono todos los meses y sé que cada peso llega directamente a los animales. La transparencia del refugio es total.', true),
 ('Florencia T.',   'adoptante',  'Mochi llegó a casa y en una semana ya dormía en mi cama. Es lo mejor que me pasó en el año.', true),
-('Equipo Devs AR', 'donante',    'Como empresa decidimos apoyar a Patitas Felices porque creemos en causas locales con impacto real. Los invitamos a sumarse.', true);
+('Equipo Devs AR', 'donante',    'Como empresa decidimos apoyar a Fundacion huellitas de esperanza porque creemos en causas locales con impacto real. Los invitamos a sumarse.', true);
