@@ -170,8 +170,10 @@ p  { font-size: 1rem; color: var(--color-gray); }
 
 /* ===== RESPONSIVE ===== */
 @media (max-width: 768px) {
-  .hero { padding: 4.5rem 0 1.25rem; }
-  .hero__media { height: clamp(155px, 38vw, 220px); object-position: center 24%; }
+  .hero { min-height: 100svh; }
+  .hero__content-wrap { align-items: center; justify-content: center; text-align: center; }
+  .hero__content { max-width: 620px; padding: 0 1rem; }
+  .hero__ctas { justify-content: center; }
   .navbar__links { display: none; }
   .navbar__cta .btn { display: none; }
   .hamburger { display: flex; }
@@ -182,28 +184,51 @@ p  { font-size: 1rem; color: var(--color-gray); }
 /* ===== HERO ===== */
 .hero {
   position: relative;
-  padding: 5.25rem 0 1.5rem;
-  background: linear-gradient(180deg, #fff 0%, #FAEFEA 100%);
-}
-.hero--image .container {
+  min-height: 100svh;
   display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-.hero__media-wrap {
-  width: min(100%, 980px);
-  border-radius: 24px;
+  align-items: stretch;
+  justify-content: stretch;
+  padding: 0;
   overflow: hidden;
-  box-shadow: 0 22px 60px rgba(47,39,36,.12);
-  background: #fff;
+  background: #F7ECE6;
 }
-.hero__media {
-  display: block;
+.hero--video {
+  isolation: isolate;
+}
+.hero__background-video {
+  position: absolute;
+  inset: 0;
   width: 100%;
-  height: clamp(180px, 26vw, 280px);
+  height: 100%;
   object-fit: cover;
   object-position: center 28%;
+  display: block;
 }
+.hero__video-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, rgba(33,24,21,.58) 0%, rgba(47,39,36,.28) 45%, rgba(255,255,255,.08) 100%);
+}
+.hero__content-wrap {
+  position: relative;
+  z-index: 1;
+  min-height: 100svh;
+  display: flex;
+  align-items: center;
+}
+.hero__content {
+  max-width: 680px;
+  color: #fff;
+  padding-top: 4.5rem;
+}
+.hero__label { font-size: .95rem; font-weight: 600; color: #F4DAD2; margin-bottom: 1rem; letter-spacing: .05em; text-transform: uppercase; }
+.hero__content h1 { color: #fff; margin-bottom: 1.25rem; }
+.hero__sub { font-size: 1.1rem; color: rgba(255,255,255,.92); margin-bottom: 2rem; max-width: 560px; }
+.hero__ctas { display: flex; gap: 1rem; flex-wrap: wrap; }
+.hero .btn-primary { background: #F4DAD2; color: #3A2823; }
+.hero .btn-primary:hover { background: #E8C0B5; color: #241916; }
+.hero .btn-outline { color: #fff; border-color: rgba(255,255,255,.88); }
+.hero .btn-outline:hover { background: #fff; color: #3A2823; }
 .sr-only {
   position: absolute;
   width: 1px;
