@@ -12,16 +12,25 @@ const CAROUSEL_ITEMS = [
 
 const AUTO_SCROLL_DELAY = 2500;
 
+function getCarouselOrder(item) {
+  const fileMatch = String(item.file).match(/Adopcion\s+(\d+)/i);
+  const titleMatch = String(item.title).match(/(\d+)/);
+  const value = fileMatch?.[1] || titleMatch?.[1];
+  return value ? Number(value) : Number.MAX_SAFE_INTEGER;
+}
+
+const CAROUSEL_ORDERED_ITEMS = [...CAROUSEL_ITEMS].sort((a, b) => getCarouselOrder(a) - getCarouselOrder(b));
+
 let carouselIndex = 0;
 let carouselTimer = null;
 let slideStepPx = 0;
-let slideCount = CAROUSEL_ITEMS.length;
+let slideCount = CAROUSEL_ORDERED_ITEMS.length;
 
 function buildCarousel() {
   const track = document.getElementById('carousel-track');
   if (!track) return;
 
-  track.innerHTML = [...CAROUSEL_ITEMS, ...CAROUSEL_ITEMS].map((item) => {
+  track.innerHTML = [...CAROUSEL_ORDERED_ITEMS, ...CAROUSEL_ORDERED_ITEMS].map((item) => {
     const src = `assets/img/Carrousel/${encodeURIComponent(item.file)}`;
     return `
       <article class="carousel__slide">
