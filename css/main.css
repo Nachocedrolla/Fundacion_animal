@@ -285,6 +285,11 @@ main { padding-top: 84px !important; }
   object-position: center 28%;
   display: block;
   background: #F7ECE6;
+  opacity: 0;
+  transition: opacity .35s ease;
+}
+.hero--ready .hero__background-video {
+  opacity: 1;
 }
 .sr-only {
   position: absolute;
