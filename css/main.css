@@ -313,11 +313,61 @@ main { padding-top: 84px !important; }
 
 /* ===== CÓMO AYUDAR ===== */
 .como-ayudar__grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
-.como-ayudar__card { background: var(--color-white); border-radius: var(--radius-md); padding: 2rem; box-shadow: var(--shadow-sm); text-align: center; transition: transform var(--transition), box-shadow var(--transition); }
+.como-ayudar__card {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  min-height: 320px;
+  border-radius: var(--radius-md);
+  padding: 2rem;
+  box-shadow: var(--shadow-sm);
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: .75rem;
+  color: #fff;
+  transition: transform var(--transition), box-shadow var(--transition);
+  background: linear-gradient(180deg, rgba(26,26,26,.08), rgba(26,26,26,.72));
+}
+.como-ayudar__card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  transform: scale(1.02);
+  z-index: -2;
+}
+.como-ayudar__card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(255,255,255,.06) 0%, rgba(26,26,26,.18) 30%, rgba(26,26,26,.78) 100%);
+  z-index: -1;
+}
 .como-ayudar__card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); }
+.como-ayudar__card--dinero::before { background-image: url('../assets/img/Dona%20dinero.png'); }
+.como-ayudar__card--alimentos::before { background-image: url('../assets/img/Dona%20alimentos%20II.png'); }
+.como-ayudar__card--tiempo::before { background-image: url('../assets/img/Voluntarios.png'); }
 .como-ayudar__icon { font-size: 2.5rem; margin-bottom: 1rem; }
-.como-ayudar__card h3 { margin-bottom: .75rem; }
+.como-ayudar__card h3 { margin-bottom: .25rem; color: #fff; }
+.como-ayudar__card p { color: rgba(255,255,255,.92); max-width: 32ch; }
+.como-ayudar__card .btn { width: fit-content; }
+.como-ayudar__card .btn-primary { background: #F9E7DE; color: #2F2724; }
+.como-ayudar__card .btn-primary:hover { background: #fff; color: #1A1A1A; }
+.como-ayudar__card .btn-dark { background: rgba(255,255,255,.92); color: #1A1A1A; }
+.como-ayudar__card .btn-dark:hover { background: #fff; color: #000; }
 @media (max-width: 768px) { .como-ayudar__grid { grid-template-columns: 1fr; } }
+@media (max-width: 768px) {
+  .como-ayudar__card {
+    min-height: 280px;
+    padding: 1.5rem;
+  }
+  .como-ayudar__icon { font-size: 2.1rem; }
+  .como-ayudar__card p { max-width: none; }
+}
 
 /* ===== DONACIÓN ===== */
 .donacion { background: var(--color-primary-light); }
