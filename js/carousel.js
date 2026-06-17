@@ -9,19 +9,24 @@ const CAROUSEL_ITEMS = [
   { file: 'Adopcion 6.png', title: 'Adopción 6', text: 'Historias reales de adopción y esperanza.' },
 ];
 
+const AUTO_SCROLL_DELAY = 2500;
+
 let carouselIndex = 0;
 let carouselTimer = null;
+let slideStepPx = 0;
+let slideCount = CAROUSEL_ITEMS.length;
 
 function buildCarousel() {
   const track = document.getElementById('carousel-track');
-  const dots = document.getElementById('carousel-dots');
-  if (!track || !dots) return;
+  if (!track) return;
 
-  track.innerHTML = CAROUSEL_ITEMS.map((item) => {
+  track.innerHTML = [...CAROUSEL_ITEMS, ...CAROUSEL_ITEMS].map((item) => {
     const src = `assets/img/Carrousel/${encodeURIComponent(item.file)}`;
     return `
       <article class="carousel__slide">
-        <img src="${src}" alt="${item.title}" loading="lazy">
+        <div class="carousel__media">
+          <img src="${src}" alt="${item.title}" loading="lazy">
+        </div>
         <div class="carousel__caption">
           <strong>${item.title}</strong>
           <span>${item.text}</span>
@@ -29,61 +34,62 @@ function buildCarousel() {
       </article>`;
   }).join('');
 
-  dots.innerHTML = CAROUSEL_ITEMS.map((_, index) => (
-    `<button type="button" class="carousel__dot${index === 0 ? ' active' : ''}" aria-label="Ir a la imagen ${index + 1}" data-slide="${index}"></button>`
-  )).join('');
-
-  const prev = document.querySelector('.carousel__control--prev');
-  const next = document.querySelector('.carousel__control--next');
-  prev?.addEventListener('click', () => moveCarousel(-1));
-  next?.addEventListener('click', () => moveCarousel(1));
-  dots.querySelectorAll('.carousel__dot').forEach((dot) => {
-    dot.addEventListener('click', () => {
-      const target = Number(dot.dataset.slide || 0);
-      goToSlide(target);
-    });
-  });
-
-  renderCarousel();
+  updateMeasurements();
+  renderCarousel(false);
   startCarouselAutoplay();
+
+  window.addEventListener('resize', handleResize, { passive: true });
+  track.addEventListener('transitionend', handleTransitionEnd);
 }
 
-function renderCarousel() {
+function updateMeasurements() {
   const track = document.getElementById('carousel-track');
-  const dots = document.getElementById('carousel-dots');
-  if (!track || !dots) return;
-  const total = CAROUSEL_ITEMS.length;
-  carouselIndex = (carouselIndex + total) % total;
-  track.style.transform = `translateX(-${carouselIndex * 100}%)`;
-  dots.querySelectorAll('.carousel__dot').forEach((dot, index) => {
-    dot.classList.toggle('active', index === carouselIndex);
-  });
+  const firstSlide = track?.querySelector('.carousel__slide');
+  if (!track || !firstSlide) return;
+
+  const slideWidth = firstSlide.getBoundingClientRect().width;
+  const trackStyles = window.getComputedStyle(track);
+  const gapPx = parseFloat(trackStyles.columnGap || trackStyles.gap || '0') || 0;
+  slideStepPx = slideWidth + gapPx;
+}
+
+function renderCarousel(animate = true) {
+  const track = document.getElementById('carousel-track');
+  if (!track || !slideStepPx) return;
+
+  track.style.transition = animate ? 'transform .8s cubic-bezier(.22,.61,.36,1)' : 'none';
+  track.style.transform = `translateX(-${carouselIndex * slideStepPx}px)`;
 }
 
 function moveCarousel(direction) {
   carouselIndex += direction;
-  renderCarousel();
-  startCarouselAutoplay();
+  renderCarousel(true);
 }
 
-function goToSlide(index) {
-  carouselIndex = index;
-  renderCarousel();
-  startCarouselAutoplay();
+function handleTransitionEnd() {
+  if (carouselIndex >= slideCount) {
+    carouselIndex = 0;
+    renderCarousel(false);
+  }
 }
 
 function startCarouselAutoplay() {
   stopCarouselAutoplay();
-  carouselTimer = window.setTimeout(() => {
+  carouselTimer = window.setInterval(() => {
     moveCarousel(1);
-  }, 2600);
+  }, AUTO_SCROLL_DELAY);
 }
 
 function stopCarouselAutoplay() {
   if (carouselTimer) {
-    window.clearTimeout(carouselTimer);
+    window.clearInterval(carouselTimer);
     carouselTimer = null;
   }
+}
+
+function handleResize() {
+  updateMeasurements();
+  renderCarousel(false);
 }
 
 document.addEventListener('DOMContentLoaded', buildCarousel);
