@@ -235,7 +235,7 @@ p  { font-size: 1rem; color: var(--color-gray); }
 .carousel-section .section-subtitle { margin-bottom: 1.5rem; }
 .carousel {
   position: relative;
-  width: min(100%, 540px);
+  width: min(100%, 380px);
   margin: 0 auto;
   border-radius: 24px;
   overflow: hidden;
@@ -257,7 +257,7 @@ p  { font-size: 1rem; color: var(--color-gray); }
   min-width: 100%;
   position: relative;
   display: grid;
-  min-height: clamp(120px, 16vw, 170px);
+  min-height: clamp(84px, 11vw, 119px);
   grid-template-rows: 1fr auto;
   background: #fff;
 }
@@ -329,7 +329,7 @@ p  { font-size: 1rem; color: var(--color-gray); }
 @media (max-width: 768px) {
   .carousel { width: 100%; }
   .carousel__slide {
-    min-height: clamp(110px, 34vw, 150px);
+    min-height: clamp(77px, 24vw, 105px);
     grid-template-rows: 1fr auto;
   }
   .carousel__control { width: 36px; height: 36px; }
