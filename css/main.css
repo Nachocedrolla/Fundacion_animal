@@ -170,6 +170,8 @@ p  { font-size: 1rem; color: var(--color-gray); }
 
 /* ===== RESPONSIVE ===== */
 @media (max-width: 768px) {
+  .hero { padding: 4.75rem 0 1.5rem; }
+  .hero__image { height: clamp(190px, 42vw, 280px); object-position: center 24%; }
   .navbar__links { display: none; }
   .navbar__cta .btn { display: none; }
   .hamburger { display: flex; }
@@ -178,16 +180,41 @@ p  { font-size: 1rem; color: var(--color-gray); }
 }
 
 /* ===== HERO ===== */
-.hero { position: relative; min-height: 100vh; display: flex; align-items: center; padding-top: 80px; }
-.hero__bg { position: absolute; inset: 0; background-image: linear-gradient(135deg, #F7ECE6 0%, #E8D5CB 100%); background-size: cover; background-position: center; background-attachment: fixed; }
-.hero__overlay { position: absolute; inset: 0; background: linear-gradient(135deg, rgba(255,255,255,.42) 0%, rgba(247,236,230,.24) 100%); }
-.hero__content { position: relative; color: var(--color-dark); max-width: 700px; }
-.hero__label { font-size: .95rem; font-weight: 600; color: #8F6B5E; margin-bottom: 1rem; letter-spacing: .05em; text-transform: uppercase; }
-.hero__content h1 { color: var(--color-dark); margin-bottom: 1.25rem; }
-.hero__sub { font-size: 1.1rem; color: var(--color-gray); margin-bottom: 2rem; max-width: 540px; }
-.hero__ctas { display: flex; gap: 1rem; flex-wrap: wrap; }
-.hero .btn-outline { color: var(--color-dark); border-color: var(--color-dark); }
-.hero .btn-outline:hover { background: var(--color-dark); color: var(--color-white); }
+.hero {
+  position: relative;
+  padding: 5.5rem 0 2rem;
+  background: linear-gradient(180deg, #fff 0%, #FAEFEA 100%);
+}
+.hero--image .container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.hero__media-wrap {
+  width: min(100%, 1040px);
+  border-radius: 28px;
+  overflow: hidden;
+  box-shadow: 0 22px 60px rgba(47,39,36,.12);
+  background: #fff;
+}
+.hero__image {
+  display: block;
+  width: 100%;
+  height: clamp(220px, 36vw, 360px);
+  object-fit: cover;
+  object-position: center 28%;
+}
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
 
 /* ===== IMPACTO ===== */
 .impacto { background: linear-gradient(135deg, #E8D2C8 0%, #D8B7AA 100%); padding: 3rem 0; }
