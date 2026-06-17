@@ -402,11 +402,6 @@ main { padding-top: 84px !important; }
   z-index: 1;
   text-align: left;
 }
-.carousel__caption strong {
-  display: block;
-  font-size: .92rem;
-  margin-bottom: .15rem;
-}
 .carousel__caption span {
   display: block;
   font-size: .76rem;

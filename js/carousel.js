@@ -38,7 +38,6 @@ function buildCarousel() {
           <img src="${src}" alt="${item.title}" loading="lazy">
         </div>
         <div class="carousel__caption">
-          <strong>${item.title}</strong>
           <span>${item.text}</span>
         </div>
       </article>`;
