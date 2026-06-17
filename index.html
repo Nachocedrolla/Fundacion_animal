@@ -54,7 +54,7 @@
 </nav>
 
 <section class="hero" id="inicio">
-  <div class="hero__bg" style="background-image: linear-gradient(135deg, rgba(26,26,26,.86), rgba(55,65,81,.66)), url('assets/img/hero.jpg');"></div>
+  <div class="hero__bg" style="background-image: linear-gradient(135deg, rgba(26,26,26,.86), rgba(55,65,81,.66));"></div>
   <div class="hero__overlay"></div>
   <div class="hero__content container">
     <p class="hero__label">🐾 Refugio animal desde 2020</p>
@@ -63,6 +63,25 @@
     <div class="hero__ctas">
       <a href="#donacion" class="btn btn-primary">❤️ Quiero donar</a>
       <a href="#animales" class="btn btn-outline">🐾 Conocé los animales</a>
+    </div>
+  </div>
+</section>
+
+<section class="section carousel-section">
+  <div class="container">
+    <div class="section-heading reveal">
+      <p class="section-kicker">Momentos que inspiran adopción</p>
+      <h2 class="section-title">Una galería viva de esperanza</h2>
+      <p class="section-subtitle">Historias reales del refugio en imágenes, para que veas por qué cada apoyo importa.</p>
+    </div>
+
+    <div class="carousel reveal" aria-label="Carrusel de imágenes del refugio">
+      <button class="carousel__control carousel__control--prev" type="button" aria-label="Imagen anterior">‹</button>
+      <div class="carousel__viewport">
+        <div class="carousel__track" id="carousel-track"></div>
+      </div>
+      <button class="carousel__control carousel__control--next" type="button" aria-label="Imagen siguiente">›</button>
+      <div class="carousel__dots" id="carousel-dots" aria-label="Seleccionar imagen"></div>
     </div>
   </div>
 </section>
@@ -232,6 +251,7 @@
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script src="js/supabase-client.js"></script>
 <script src="js/utils.js"></script>
+<script src="js/carousel.js"></script>
 <script src="js/galeria.js"></script>
 <script src="js/testimonios.js"></script>
 <script src="js/whatsapp.js"></script>
