@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Testimonios — Patitas Felices</title>
+  <meta name="description" content="Lo que dicen adoptantes, voluntarios y donantes de Patitas Felices.">
+  <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+
+<nav class="navbar">
+  <div class="navbar__inner">
+    <a href="/" class="navbar__logo">🐾 Patitas Felices</a>
+    <ul class="navbar__links">
+      <li><a href="galeria.html">Animales</a></li>
+      <li><a href="/#como-ayudar">Cómo ayudar</a></li>
+      <li><a href="/#donacion">Donar</a></li>
+    </ul>
+    <div class="navbar__cta">
+      <a href="/#donacion" class="btn btn-primary">❤️ Donar</a>
+      <button class="hamburger"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+  <div class="mobile-menu">
+    <a href="/">Inicio</a>
+    <a href="galeria.html">Animales</a>
+    <a href="/#donacion" class="btn btn-primary" style="text-align:center">❤️ Donar</a>
+  </div>
+</nav>
+
+<main style="padding-top:80px">
+  <section class="section">
+    <div class="container">
+      <h1 class="reveal" style="margin-bottom:.5rem">Testimonios</h1>
+      <p class="reveal" style="margin-bottom:2rem">Adoptantes, voluntarios y donantes comparten su experiencia con Patitas Felices.</p>
+
+      <div class="filtros reveal" id="filtros-tipo">
+        <button class="filtro-btn active" data-filtro-tipo="todos">Todos</button>
+        <button class="filtro-btn" data-filtro-tipo="adoptante">Adoptantes</button>
+        <button class="filtro-btn" data-filtro-tipo="voluntario">Voluntarios</button>
+        <button class="filtro-btn" data-filtro-tipo="donante">Donantes</button>
+      </div>
+
+      <div class="testimonios-grid" id="testimonios-full" style="margin-top:2rem"></div>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer__bottom">© 2026 Patitas Felices — <a href="/" style="color:var(--color-primary)">Volver al inicio</a></div>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="js/supabase-client.js"></script>
+<script src="js/utils.js"></script>
+<script src="js/testimonios.js"></script>
+<script src="js/whatsapp.js"></script>
+<script>
+// Filtro por tipo en testimonios.html
+document.addEventListener('DOMContentLoaded', () => {
+  document.querySelectorAll('[data-filtro-tipo]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const tipo = btn.dataset.filtroTipo;
+      document.querySelectorAll('[data-filtro-tipo]').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      document.querySelectorAll('#testimonios-full .testimonio-card').forEach(card => {
+        card.style.display = (tipo === 'todos' || card.dataset.tipo === tipo) ? '' : 'none';
+      });
+    });
+  });
+});
+</script>
+</body>
+</html>

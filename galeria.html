@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Galería de Animales — Patitas Felices</title>
+  <meta name="description" content="Conocé a todos los animales rescatados en Patitas Felices. Adoptá, doná o hacete voluntario.">
+  <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+
+<nav class="navbar">
+  <div class="navbar__inner">
+    <a href="/" class="navbar__logo">🐾 Patitas Felices</a>
+    <ul class="navbar__links">
+      <li><a href="/#animales">Animales</a></li>
+      <li><a href="/#como-ayudar">Cómo ayudar</a></li>
+      <li><a href="testimonios.html">Testimonios</a></li>
+      <li><a href="/#donacion">Donar</a></li>
+    </ul>
+    <div class="navbar__cta">
+      <a href="/#donacion" class="btn btn-primary">❤️ Donar</a>
+      <button class="hamburger"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+  <div class="mobile-menu">
+    <a href="/">Inicio</a>
+    <a href="testimonios.html">Testimonios</a>
+    <a href="/#donacion" class="btn btn-primary" style="text-align:center">❤️ Donar</a>
+  </div>
+</nav>
+
+<main style="padding-top:80px">
+  <section class="section">
+    <div class="container">
+      <h1 class="reveal" style="margin-bottom:.5rem">Animales rescatados</h1>
+      <p class="reveal" style="margin-bottom:2rem">Cada uno tiene una historia. Todos merecen un hogar.</p>
+
+      <div style="display:flex;gap:2rem;flex-wrap:wrap;margin-bottom:1.5rem">
+        <div>
+          <p style="font-size:.8rem;font-weight:600;color:#6B7280;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">Especie</p>
+          <div class="filtros">
+            <button class="filtro-btn active" data-filtro-especie="todos">Todos</button>
+            <button class="filtro-btn" data-filtro-especie="perro">🐕 Perros</button>
+            <button class="filtro-btn" data-filtro-especie="gato">🐈 Gatos</button>
+            <button class="filtro-btn" data-filtro-especie="otro">🐇 Otros</button>
+          </div>
+        </div>
+        <div>
+          <p style="font-size:.8rem;font-weight:600;color:#6B7280;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">Estado</p>
+          <div class="filtros">
+            <button class="filtro-btn active" data-filtro-estado="todos">Todos</button>
+            <button class="filtro-btn" data-filtro-estado="disponibles">Disponibles</button>
+            <button class="filtro-btn" data-filtro-estado="adoptados">Adoptados</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="animales-grid" id="galeria-full"></div>
+
+      <div style="text-align:center;margin-top:2.5rem">
+        <button id="btn-mas" class="btn btn-primary" style="display:none">Ver más animales</button>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer__bottom">© 2026 Patitas Felices — <a href="/" style="color:var(--color-primary)">Volver al inicio</a></div>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="js/supabase-client.js"></script>
+<script src="js/utils.js"></script>
+<script src="js/galeria.js"></script>
+<script src="js/whatsapp.js"></script>
+</body>
+</html>
