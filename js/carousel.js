@@ -7,6 +7,7 @@ const CAROUSEL_ITEMS = [
   { file: 'Adopcion 4.png', title: 'Adopción 4', text: 'El refugio se transforma cuando aparece una oportunidad.' },
   { file: 'Adopcion 5.png', title: 'Adopción 5', text: 'Pequeños pasos que cambian una vida completa.' },
   { file: 'Adopcion 6.png', title: 'Adopción 6', text: 'Historias reales de adopción y esperanza.' },
+  { file: 'Adopcion 7.png', title: 'Adopción 7', text: 'Una historia más para seguir compartiendo esperanza.' },
 ];
 
 const AUTO_SCROLL_DELAY = 2500;
