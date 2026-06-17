@@ -1,6 +1,14 @@
 // js/galeria.js
 const WHATSAPP_NUM = '3516421684';
 
+function normalizeEdad(edad) {
+  if (!edad) return '';
+
+  return String(edad)
+    .replace(/\baÃ±os\b/gi, 'años')
+    .replace(/\banos\b/gi, 'años');
+}
+
 function buildAnimalCard(animal) {
   const especie = animal.especie || 'otro';
   const badgeEspecie = `<span class="badge badge-${especie}">${especie}</span>`;
@@ -15,7 +23,7 @@ function buildAnimalCard(animal) {
       <div class="animal-card__body">
         <div style="display:flex;gap:.5rem;flex-wrap:wrap;margin-bottom:.5rem">${badgeEspecie}${badgeAdoptado}</div>
         <div class="animal-card__name">${animal.nombre}</div>
-        <div class="animal-card__meta">${animal.edad || ''}</div>
+        <div class="animal-card__meta">${normalizeEdad(animal.edad)}</div>
         <div class="animal-card__historia">${animal.historia || ''}</div>
       </div>
     </div>`;
