@@ -55,14 +55,18 @@
 <section class="hero hero--image" id="inicio">
   <div class="container">
     <div class="hero__media-wrap reveal">
-      <img
-        src="assets/img/Hero.png"
-        alt="Hero de Fundacion huellitas de esperanza con un perro rescatado"
-        class="hero__image"
-        loading="eager"
-        fetchpriority="high"
-        decoding="async"
+      <video
+        class="hero__media"
+        autoplay
+        muted
+        loop
+        playsinline
+        preload="metadata"
+        poster="assets/img/Hero.png"
       >
+        <source src="assets/Hero.mp4" type="video/mp4">
+        <img src="assets/img/Hero.png" alt="Hero de Fundacion huellitas de esperanza con un perro rescatado">
+      </video>
     </div>
     <h1 class="sr-only">Cada vida importa. Ayudanos a salvarlas.</h1>
     <p class="sr-only">Somos Fundacion huellitas de esperanza, un refugio en Córdoba Capital dedicado a rescatar, rehabilitar y encontrar hogar para animales en situación de calle.</p>
