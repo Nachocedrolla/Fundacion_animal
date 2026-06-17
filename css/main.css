@@ -215,7 +215,7 @@ p  { font-size: 1rem; color: var(--color-gray); }
 .carousel-section { background: linear-gradient(180deg, #fff 0%, #FFF7F0 100%); }
 .carousel {
   position: relative;
-  width: min(100%, 760px);
+  width: min(100%, 680px);
   margin: 0 auto;
   border-radius: 24px;
   overflow: hidden;
@@ -307,7 +307,7 @@ p  { font-size: 1rem; color: var(--color-gray); }
   background: var(--color-primary);
 }
 @media (max-width: 768px) {
-  .carousel { width: min(100%, 100%); }
+  .carousel { width: 100%; }
   .carousel__slide { aspect-ratio: 16 / 9; }
   .carousel__control { width: 36px; height: 36px; }
   .carousel__caption { left: .85rem; right: .85rem; bottom: .85rem; }
