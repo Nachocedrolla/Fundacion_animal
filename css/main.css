@@ -284,6 +284,7 @@ main { padding-top: 84px !important; }
   object-fit: cover;
   object-position: center 28%;
   display: block;
+  background: #F7ECE6;
 }
 .sr-only {
   position: absolute;
